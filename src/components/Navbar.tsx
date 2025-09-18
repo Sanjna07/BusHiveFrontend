@@ -13,8 +13,9 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <img src="/logo.jpeg" alt="BusHive" className="w-10 h-10" />
-            <span className="text-xl font-bold text-orange-600">BusHive</span>
-          </Link>
+            {/* <span className="text-xl font-bold text-orange-600">BusHive</span>
+            
+          </Link> */}
 
           {/* Right side */}
           <div className="flex items-center space-x-4">
