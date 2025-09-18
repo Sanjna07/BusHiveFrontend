@@ -53,6 +53,25 @@ const UserDashboard: React.FC = () => {
     setSelectedBus(bus);
   };
 
+  const quickActions = [
+    { icon: UserCheck, label: 'Update Capacity', color: 'text-orange-600 bg-orange-100', action: 'updateCapacity' },
+    { icon: AlertCircle, label: 'Report Delay', color: 'text-red-600 bg-red-100', action: 'reportDelay' },
+    { icon: Users, label: 'Find Carpool', color: 'text-blue-600 bg-blue-100', path: '/user/carpool' },
+    { icon: Route, label: 'Plan Route', color: 'text-green-600 bg-green-100', path: '/user/route-planner' },
+    { icon: MessageSquare, label: 'Feedback', color: 'text-purple-600 bg-purple-100', path: '/user/feedback' },
+    { icon: Settings, label: 'Settings', color: 'text-gray-600 bg-gray-100', path: '/user/settings' }
+  ];
+
+  const handleQuickAction = (path?: string, action?: string) => {
+    if (path) {
+      navigate(path);
+    } else if (action === 'updateCapacity') {
+      handleUpdateCapacity();
+    } else if (action === 'reportDelay') {
+      handleReportDelay();
+    }
+  };
+
   const handleUpdateCapacity = () => {
     const confirmed = window.confirm('Have you boarded the bus?\n\nClick OK for "Boarded Bus" or Cancel for "Not Boarded"');
     if (confirmed) {
@@ -113,43 +132,39 @@ const UserDashboard: React.FC = () => {
               <div className="space-y-6">
                 <SearchBar onSearch={handleSearch} />
                 
-                {/* Quick Actions */}
-                <div className="bg-white rounded-lg shadow-md p-6">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Quick Actions</h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    <button
-                      onClick={handleUpdateCapacity}
-                      className="flex flex-col items-center space-y-2 p-4 rounded-lg border hover:shadow-md transition-all duration-200"
-                    >
-                      <div className="p-3 rounded-full text-orange-600 bg-orange-100">
-                        <UserCheck className="w-5 h-5" />
-                      </div>
-                      <span className="text-sm font-medium text-gray-700">Update Capacity</span>
-                    </button>
-                    <button
-                      onClick={handleReportDelay}
-                      className="flex flex-col items-center space-y-2 p-4 rounded-lg border hover:shadow-md transition-all duration-200"
-                    >
-                      <div className="p-3 rounded-full text-red-600 bg-red-100">
-                        <AlertCircle className="w-5 h-5" />
-                      </div>
-                      <span className="text-sm font-medium text-gray-700">Report Delay</span>
-                    </button>
-                  </div>
-                </div>
-                
-                {/* Map View - between search and available buses */}
+                {/* Map View - moved above Available Buses */}
                 {showMap && selectedBus && (
                   <MapView selectedBus={selectedBus} />
                 )}
-
+                
                 {searchResults.length > 0 && (
-                  <BusList 
-                    buses={searchResults} 
-                    onBusSelect={handleBusSelect}
-                    selectedBus={selectedBus}
-                  />
+                  <>
+                    <BusList 
+                      buses={searchResults} 
+                      onBusSelect={handleBusSelect}
+                      selectedBus={selectedBus}
+                    />
+                  </>
                 )}
+
+                {/* Quick Actions */}
+                <div className="bg-white rounded-lg shadow-md p-6">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Quick Actions</h3>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                    {quickActions.map((action, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleQuickAction(action.path, action.action)}
+                        className="flex flex-col items-center space-y-2 p-4 rounded-lg border hover:shadow-md transition-all duration-200"
+                      >
+                        <div className={`p-3 rounded-full ${action.color}`}>
+                          <action.icon className="w-5 h-5" />
+                        </div>
+                        <span className="text-sm font-medium text-gray-700">{action.label}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
             )}
 

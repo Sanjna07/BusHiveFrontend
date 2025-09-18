@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { User, LogIn } from 'lucide-react';
+import { Bus, User, LogIn } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
@@ -12,10 +12,11 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <img src="/logo.jpeg" alt="BusHive" className="w-10 h-10" />
-            {/* <span className="text-xl font-bold text-orange-600">BusHive</span>
-            
-          </Link> */}
+            <div className="bg-orange-500 p-2 rounded-lg">
+              <Bus className="w-6 h-6 text-white" />
+            </div>
+            <span className="text-xl font-bold text-orange-600">BusHive</span>
+          </Link>
 
           {/* Right side */}
           <div className="flex items-center space-x-4">
