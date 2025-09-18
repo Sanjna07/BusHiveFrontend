@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
             <img 
               src="\image.jpeg" 
               alt="Logo" 
-              className="h-20 w-auto" // responsive size
+              className="h-16 w-auto" // responsive size
             />
           </Link>
 
