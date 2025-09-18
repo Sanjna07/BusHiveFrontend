@@ -60,7 +60,7 @@ const UserDashboard: React.FC = () => {
     setSelectedBus(bus);
   };
 
-  // Only two quick actions
+  // Quick Actions
   const quickActions = [
     { icon: UserCheck, label: 'Update Capacity', color: 'text-orange-600 bg-orange-100', action: 'updateCapacity' },
     { icon: AlertCircle, label: 'Report Delay', color: 'text-red-600 bg-red-100', action: 'reportDelay' }
@@ -148,26 +148,28 @@ const UserDashboard: React.FC = () => {
                   />
                 )}
 
-                {/* Quick Actions */}
-                <div className="bg-white rounded-lg shadow-md p-6">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Quick Actions</h3>
-                  <div className="space-y-4">
-                    {quickActions.map((action, index) => (
-                      <button
-                        key={index}
-                        onClick={() => handleQuickAction(action.action)}
-                        className="flex items-center p-4 w-full rounded-lg border hover:shadow-md transition-all duration-200"
-                      >
-                        <div className={`p-3 rounded-full ${action.color}`}>
-                          <action.icon className="w-6 h-6" />
-                        </div>
-                        <span className="text-base font-medium text-gray-700 ml-4">
-                          {action.label}
-                        </span>
-                      </button>
-                    ))}
+                {/* Quick Actions: hide after searching buses */}
+                {searchResults.length === 0 && (
+                  <div className="bg-white rounded-lg shadow-md p-6">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Quick Actions</h3>
+                    <div className="space-y-4">
+                      {quickActions.map((action, index) => (
+                        <button
+                          key={index}
+                          onClick={() => handleQuickAction(action.action)}
+                          className="flex items-center p-4 w-full rounded-lg border hover:shadow-md transition-all duration-200"
+                        >
+                          <div className={`p-3 rounded-full ${action.color}`}>
+                            <action.icon className="w-6 h-6" />
+                          </div>
+                          <span className="text-base font-medium text-gray-700 ml-4">
+                            {action.label}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             )}
 
