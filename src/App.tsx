@@ -1,0 +1,45 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Layout from './layouts/Layout';
+import LandingPage from './pages/LandingPage';
+import UserLogin from './pages/auth/UserLogin';
+import UserSignup from './pages/auth/UserSignup';
+import DriverLogin from './pages/auth/DriverLogin';
+import DriverSignup from './pages/auth/DriverSignup';
+import AadhaarVerification from './pages/auth/AadhaarVerification';
+import SetPassword from './pages/auth/SetPassword';
+import UserDashboard from './pages/user/UserDashboard';
+import DriverDashboard from './pages/driver/DriverDashboard';
+
+function App() {
+  return (
+    <Router>
+      <div className="min-h-screen bg-gray-50">
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<LandingPage />} />
+            
+            {/* User Auth Routes */}
+            <Route path="/user/login" element={<UserLogin />} />
+            <Route path="/user/signup" element={<UserSignup />} />
+            
+            {/* Driver Auth Routes */}
+            <Route path="/driver/login" element={<DriverLogin />} />
+            <Route path="/driver/signup" element={<DriverSignup />} />
+            <Route path="/driver/verify-aadhaar" element={<AadhaarVerification />} />
+            <Route path="/driver/set-password" element={<SetPassword />} />
+            
+            {/* Dashboard Routes */}
+            <Route path="/user/dashboard" element={<UserDashboard />} />
+            <Route path="/driver/dashboard" element={<DriverDashboard />} />
+            
+            {/* Redirect unknown routes */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Route>
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
