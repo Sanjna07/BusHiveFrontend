@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { Search, MapPin, Clock, Star, History, AlertTriangle, Coffee, Phone, Navigation, Users, Route, MessageSquare, Settings, UserCheck, AlertCircle } from 'lucide-react';
+import {
+  Search,
+  Star,
+  History,
+  Navigation,
+  UserCheck,
+  AlertCircle
+} from 'lucide-react';
 import SearchBar from '../../components/user/SearchBar';
 import BusList from '../../components/user/BusList';
 import MapView from '../../components/user/MapView';
@@ -53,19 +60,14 @@ const UserDashboard: React.FC = () => {
     setSelectedBus(bus);
   };
 
+  // Only two quick actions
   const quickActions = [
     { icon: UserCheck, label: 'Update Capacity', color: 'text-orange-600 bg-orange-100', action: 'updateCapacity' },
-    { icon: AlertCircle, label: 'Report Delay', color: 'text-red-600 bg-red-100', action: 'reportDelay' },
-    { icon: Users, label: 'Find Carpool', color: 'text-blue-600 bg-blue-100', path: '/user/carpool' },
-    { icon: Route, label: 'Plan Route', color: 'text-green-600 bg-green-100', path: '/user/route-planner' },
-    { icon: MessageSquare, label: 'Feedback', color: 'text-purple-600 bg-purple-100', path: '/user/feedback' },
-    { icon: Settings, label: 'Settings', color: 'text-gray-600 bg-gray-100', path: '/user/settings' }
+    { icon: AlertCircle, label: 'Report Delay', color: 'text-red-600 bg-red-100', action: 'reportDelay' }
   ];
 
-  const handleQuickAction = (path?: string, action?: string) => {
-    if (path) {
-      navigate(path);
-    } else if (action === 'updateCapacity') {
+  const handleQuickAction = (action?: string) => {
+    if (action === 'updateCapacity') {
       handleUpdateCapacity();
     } else if (action === 'reportDelay') {
       handleReportDelay();
@@ -131,43 +133,43 @@ const UserDashboard: React.FC = () => {
             {activeTab === 'search' && (
               <div className="space-y-6">
                 <SearchBar onSearch={handleSearch} />
-                
-                {/* Map View - moved above Available Buses */}
+
+                {/* Map View */}
                 {showMap && selectedBus && (
                   <MapView selectedBus={selectedBus} />
                 )}
-                
+
+                {/* Bus List */}
                 {searchResults.length > 0 && (
-                  <>
-                    <BusList 
-                      buses={searchResults} 
-                      onBusSelect={handleBusSelect}
-                      selectedBus={selectedBus}
-                    />
-                  </>
+                  <BusList
+                    buses={searchResults}
+                    onBusSelect={handleBusSelect}
+                    selectedBus={selectedBus}
+                  />
                 )}
 
                 {/* Quick Actions */}
-<div className="bg-white rounded-lg shadow-md p-6">
-  <h3 className="text-lg font-semibold text-gray-800 mb-4">Quick Actions</h3>
-  <div className="space-y-4">
-    {quickActions.map((action, index) => (
-      <button
-        key={index}
-        onClick={() => handleQuickAction(action.path, action.action)}
-        className="flex items-center justify-between p-4 w-full rounded-lg border hover:shadow-md transition-all duration-200"
-      >
-        <div className={`p-3 rounded-full ${action.color}`}>
-          <action.icon className="w-6 h-6" />
-        </div>
-        <span className="text-base font-medium text-gray-700 flex-1 ml-4">
-          {action.label}
-        </span>
-      </button>
-    ))}
-  </div>
-</div>
-
+                <div className="bg-white rounded-lg shadow-md p-6">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Quick Actions</h3>
+                  <div className="space-y-4">
+                    {quickActions.map((action, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleQuickAction(action.action)}
+                        className="flex items-center p-4 w-full rounded-lg border hover:shadow-md transition-all duration-200"
+                      >
+                        <div className={`p-3 rounded-full ${action.color}`}>
+                          <action.icon className="w-6 h-6" />
+                        </div>
+                        <span className="text-base font-medium text-gray-700 ml-4">
+                          {action.label}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
 
             {activeTab === 'favorites' && <FavoritesList />}
             {activeTab === 'history' && <TripHistory />}
