@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Clock, Star, Trash2 } from 'lucide-react';
+import { Heart, Clock, Trash2 } from 'lucide-react';
 
 const FavoritesList: React.FC = () => {
   const favorites = [
@@ -8,7 +8,6 @@ const FavoritesList: React.FC = () => {
       busNumber: 'KL-07-AX-1234',
       route: 'Tech Park → City Mall',
       avgTime: '25 mins',
-      rating: 4.2,
       lastUsed: '2 days ago'
     },
     {
@@ -16,7 +15,6 @@ const FavoritesList: React.FC = () => {
       busNumber: 'KL-07-BX-5678',
       route: 'University → Railway Station',
       avgTime: '18 mins',
-      rating: 4.5,
       lastUsed: '1 week ago'
     },
     {
@@ -24,7 +22,6 @@ const FavoritesList: React.FC = () => {
       busNumber: 'KL-07-CX-9012',
       route: 'Airport → City Mall',
       avgTime: '35 mins',
-      rating: 4.0,
       lastUsed: '3 days ago'
     }
   ];
@@ -57,17 +54,12 @@ const FavoritesList: React.FC = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 text-sm">
+            <div className="grid grid-cols-2 gap-4 text-sm">
               <div className="flex items-center space-x-1">
                 <Clock className="w-4 h-4 text-orange-500" />
                 <span className="text-gray-600">{bus.avgTime}</span>
               </div>
               
-              <div className="flex items-center space-x-1">
-                <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                <span className="text-gray-600">{bus.rating}</span>
-              </div>
-
               <div className="text-gray-500 text-xs">
                 Last used: {bus.lastUsed}
               </div>

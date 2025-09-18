@@ -1,5 +1,5 @@
 import React from 'react';
-import { History, Calendar, Clock, MapPin, Star } from 'lucide-react';
+import { History, Calendar, Clock, MapPin } from 'lucide-react';
 
 const TripHistory: React.FC = () => {
   const trips = [
@@ -9,8 +9,6 @@ const TripHistory: React.FC = () => {
       route: 'Tech Park → City Mall',
       date: '2024-01-15',
       time: '09:30 AM',
-      fare: '₹25',
-      rating: 4,
       status: 'Completed'
     },
     {
@@ -19,8 +17,6 @@ const TripHistory: React.FC = () => {
       route: 'University → Railway Station',
       date: '2024-01-12',
       time: '02:15 PM',
-      fare: '₹20',
-      rating: 5,
       status: 'Completed'
     },
     {
@@ -29,8 +25,6 @@ const TripHistory: React.FC = () => {
       route: 'Airport → City Mall',
       date: '2024-01-10',
       time: '07:45 AM',
-      fare: '₹35',
-      rating: 3,
       status: 'Completed'
     },
     {
@@ -39,26 +33,9 @@ const TripHistory: React.FC = () => {
       route: 'Hospital → Bus Stand',
       date: '2024-01-08',
       time: '05:20 PM',
-      fare: '₹18',
-      rating: 4,
       status: 'Completed'
     }
   ];
-
-  const renderStars = (rating: number) => {
-    return (
-      <div className="flex items-center space-x-1">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <Star
-            key={star}
-            className={`w-3 h-3 ${
-              star <= rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
-            }`}
-          />
-        ))}
-      </div>
-    );
-  };
 
   return (
     <div className="bg-white rounded-lg shadow-md">
@@ -82,14 +59,13 @@ const TripHistory: React.FC = () => {
                 </div>
               </div>
               <div className="text-right">
-                <p className="font-semibold text-green-600">{trip.fare}</p>
                 <span className="text-xs text-green-600 bg-green-100 px-2 py-1 rounded-full">
                   {trip.status}
                 </span>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+            <div className="grid grid-cols-2 gap-4 text-sm">
               <div className="flex items-center space-x-2">
                 <Calendar className="w-4 h-4 text-blue-500" />
                 <span className="text-gray-600">{trip.date}</span>
@@ -99,20 +75,10 @@ const TripHistory: React.FC = () => {
                 <Clock className="w-4 h-4 text-orange-500" />
                 <span className="text-gray-600">{trip.time}</span>
               </div>
-
-              <div className="flex items-center space-x-2">
-                {renderStars(trip.rating)}
-                <span className="text-xs text-gray-500">({trip.rating}/5)</span>
-              </div>
             </div>
 
-            <div className="flex space-x-3 mt-3">
-              <button className="flex-1 bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors duration-200 text-sm font-medium">
-                Book Again
-              </button>
-              <button className="flex-1 bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-orange-600 transition-colors duration-200 text-sm font-medium">
-                Rate Trip
-              </button>
+            <div className="mt-3 text-center">
+              <span className="text-xs text-gray-500">Trip completed successfully</span>
             </div>
           </div>
         ))}

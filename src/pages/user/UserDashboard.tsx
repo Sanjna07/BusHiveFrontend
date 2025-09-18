@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import { Search, MapPin, Clock, Star, History, AlertTriangle, Coffee, Phone, Navigation } from 'lucide-react';
+import { Search, MapPin, Clock, Star, History, AlertTriangle, Coffee, Phone, Navigation, Users, Route, MessageSquare, Settings } from 'lucide-react';
 import SearchBar from '../../components/user/SearchBar';
 import BusList from '../../components/user/BusList';
 import MapView from '../../components/user/MapView';
 import FavoritesList from '../../components/user/FavoritesList';
 import TripHistory from '../../components/user/TripHistory';
+import { useNavigate } from 'react-router-dom';
 
 const UserDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'search' | 'favorites' | 'history'>('search');
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [showMap, setShowMap] = useState(false);
   const [selectedBus, setSelectedBus] = useState<any>(null);
+  const navigate = useNavigate();
 
   const handleSearch = (from: string, to: string) => {
     // Mock search results
@@ -20,33 +22,27 @@ const UserDashboard: React.FC = () => {
         busNumber: 'KL-07-AX-1234',
         route: `${from} → ${to}`,
         eta: '5 mins',
-        fare: '₹25',
         currentLocation: 'Near City Mall',
         capacity: { current: 32, total: 50 },
-        driver: 'Ravi Kumar',
-        rating: 4.2
+        driver: 'Ravi Kumar'
       },
       {
         id: 2,
         busNumber: 'KL-07-BX-5678',
         route: `${from} → ${to}`,
         eta: '12 mins',
-        fare: '₹25',
         currentLocation: 'Tech Park Junction',
         capacity: { current: 18, total: 45 },
-        driver: 'Suresh Nair',
-        rating: 4.5
+        driver: 'Suresh Nair'
       },
       {
         id: 3,
         busNumber: 'KL-07-CX-9012',
         route: `${from} → ${to}`,
         eta: '18 mins',
-        fare: '₹25',
         currentLocation: 'Railway Station',
         capacity: { current: 41, total: 50 },
-        driver: 'Anil Joseph',
-        rating: 4.0
+        driver: 'Anil Joseph'
       }
     ];
     setSearchResults(mockResults);
@@ -58,11 +54,15 @@ const UserDashboard: React.FC = () => {
   };
 
   const quickActions = [
-    { icon: AlertTriangle, label: 'Update Capacity', color: 'text-orange-600 bg-orange-100' },
-    { icon: Clock, label: 'Report Delay', color: 'text-red-600 bg-red-100' },
-    { icon: Coffee, label: 'Break Time', color: 'text-blue-600 bg-blue-100' },
-    { icon: Phone, label: 'Emergency', color: 'text-purple-600 bg-purple-100' }
+    { icon: Users, label: 'Find Carpool', color: 'text-blue-600 bg-blue-100', path: '/user/carpool' },
+    { icon: Route, label: 'Plan Route', color: 'text-green-600 bg-green-100', path: '/user/route-planner' },
+    { icon: MessageSquare, label: 'Feedback', color: 'text-purple-600 bg-purple-100', path: '/user/feedback' },
+    { icon: Settings, label: 'Settings', color: 'text-gray-600 bg-gray-100', path: '/user/settings' }
   ];
+
+  const handleQuickAction = (path: string) => {
+    navigate(path);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
@@ -123,6 +123,7 @@ const UserDashboard: React.FC = () => {
                     {quickActions.map((action, index) => (
                       <button
                         key={index}
+                        onClick={() => handleQuickAction(action.path)}
                         className="flex flex-col items-center space-y-2 p-4 rounded-lg border hover:shadow-md transition-all duration-200"
                       >
                         <div className={`p-3 rounded-full ${action.color}`}>

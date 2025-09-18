@@ -10,6 +10,10 @@ import AadhaarVerification from './pages/auth/AadhaarVerification';
 import SetPassword from './pages/auth/SetPassword';
 import UserDashboard from './pages/user/UserDashboard';
 import DriverDashboard from './pages/driver/DriverDashboard';
+import CarpoolPage from './pages/user/CarpoolPage';
+import RoutePlannerPage from './pages/user/RoutePlannerPage';
+import FeedbackPage from './pages/user/FeedbackPage';
+import SettingsPage from './pages/user/SettingsPage';
 
 function App() {
   return (
@@ -31,6 +35,10 @@ function App() {
             
             {/* Dashboard Routes */}
             <Route path="/user/dashboard" element={<UserDashboard />} />
+            <Route path="/user/carpool" element={<CarpoolPage />} />
+            <Route path="/user/route-planner" element={<RoutePlannerPage />} />
+            <Route path="/user/feedback" element={<FeedbackPage />} />
+            <Route path="/user/settings" element={<SettingsPage />} />
             <Route path="/driver/dashboard" element={<DriverDashboard />} />
             
             {/* Redirect unknown routes */}

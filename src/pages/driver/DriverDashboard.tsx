@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { User, Bus, Clock, History, PlayCircle, StopCircle, Calendar } from 'lucide-react';
+import { User, Bus, History, Calendar } from 'lucide-react';
 
 const DriverDashboard: React.FC = () => {
-  const [isClockedIn, setIsClockedIn] = useState(false);
-  const [clockInTime, setClockInTime] = useState<Date | null>(null);
   const [currentTime, setCurrentTime] = useState(new Date());
 
   // Mock driver data
@@ -30,16 +28,6 @@ const DriverDashboard: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const handleClockIn = () => {
-    setIsClockedIn(true);
-    setClockInTime(new Date());
-  };
-
-  const handleClockOut = () => {
-    setIsClockedIn(false);
-    setClockInTime(null);
-  };
-
   const formatTime = (date: Date) => {
     return date.toLocaleTimeString('en-US', { 
       hour: '2-digit', 
@@ -56,18 +44,6 @@ const DriverDashboard: React.FC = () => {
       month: 'long',
       day: 'numeric'
     });
-  };
-
-  const getWorkingHours = () => {
-    if (!clockInTime) return '00:00:00';
-    
-    const now = currentTime;
-    const diff = now.getTime() - clockInTime.getTime();
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-    
-    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   };
 
   return (
@@ -96,9 +72,9 @@ const DriverDashboard: React.FC = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6">
-          {/* Clock In/Out Section */}
+          {/* Current Status Section */}
           <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold text-gray-800 mb-6">Today's Shift</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-6">Current Status</h2>
             
             {/* Current Time */}
             <div className="text-center mb-6">
@@ -108,52 +84,12 @@ const DriverDashboard: React.FC = () => {
               </div>
             </div>
 
-            {/* Clock In/Out Buttons */}
-            <div className="space-y-4">
-              {!isClockedIn ? (
-                <button
-                  onClick={handleClockIn}
-                  className="w-full bg-green-500 text-white py-4 rounded-lg hover:bg-green-600 transition-colors duration-200 font-semibold flex items-center justify-center space-x-2"
-                >
-                  <PlayCircle className="w-6 h-6" />
-                  <span>Clock In</span>
-                </button>
-              ) : (
-                <div className="space-y-4">
-                  <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-sm font-medium text-green-800">Clocked in at:</p>
-                        <p className="text-lg font-bold text-green-600">{formatTime(clockInTime!)}</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-sm font-medium text-green-800">Working hours:</p>
-                        <p className="text-lg font-bold text-green-600">{getWorkingHours()}</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <button
-                    onClick={handleClockOut}
-                    className="w-full bg-red-500 text-white py-4 rounded-lg hover:bg-red-600 transition-colors duration-200 font-semibold flex items-center justify-center space-x-2"
-                  >
-                    <StopCircle className="w-6 h-6" />
-                    <span>Clock Out</span>
-                  </button>
-                </div>
-              )}
-            </div>
-
             {/* Status */}
-            <div className="mt-6 text-center">
-              <div className={`inline-flex items-center space-x-2 px-4 py-2 rounded-full ${
-                isClockedIn ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-600'
-              }`}>
-                <div className={`w-3 h-3 rounded-full ${
-                  isClockedIn ? 'bg-green-500' : 'bg-gray-400'
-                }`}></div>
+            <div className="text-center">
+              <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-green-100 text-green-800">
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
                 <span className="font-medium">
-                  {isClockedIn ? 'Bus is Live' : 'Bus is Offline'}
+                  Bus is Active
                 </span>
               </div>
             </div>
@@ -208,7 +144,7 @@ const DriverDashboard: React.FC = () => {
         </div>
 
         {/* Quick Stats */}
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-white rounded-lg shadow-md p-6 text-center">
             <div className="text-2xl font-bold text-orange-600">156</div>
             <div className="text-sm text-gray-600">Total Trips</div>
@@ -220,10 +156,6 @@ const DriverDashboard: React.FC = () => {
           <div className="bg-white rounded-lg shadow-md p-6 text-center">
             <div className="text-2xl font-bold text-green-600">98%</div>
             <div className="text-sm text-gray-600">On-Time</div>
-          </div>
-          <div className="bg-white rounded-lg shadow-md p-6 text-center">
-            <div className="text-2xl font-bold text-purple-600">24</div>
-            <div className="text-sm text-gray-600">This Month</div>
           </div>
         </div>
       </div>

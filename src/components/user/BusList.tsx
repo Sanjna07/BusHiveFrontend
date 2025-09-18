@@ -49,11 +49,7 @@ const BusList: React.FC<BusListProps> = ({ buses, onBusSelect, selectedBus }) =>
                 <p className="text-sm text-gray-600">{bus.route}</p>
               </div>
               <div className="text-right">
-                <p className="font-semibold text-orange-600">{bus.fare}</p>
-                <div className="flex items-center space-x-1">
-                  <Star className="w-3 h-3 text-yellow-400 fill-current" />
-                  <span className="text-xs text-gray-600">{bus.rating}</span>
-                </div>
+                <p className="text-sm text-gray-600">Available</p>
               </div>
             </div>
 
@@ -79,7 +75,9 @@ const BusList: React.FC<BusListProps> = ({ buses, onBusSelect, selectedBus }) =>
             </div>
 
             <div className="mt-3 pt-3 border-t border-gray-100">
-              <p className="text-xs text-gray-500">Driver: {bus.driver}</p>
+              <button className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition-colors duration-200 text-sm font-medium">
+                Select Bus
+              </button>
             </div>
           </div>
         ))}
