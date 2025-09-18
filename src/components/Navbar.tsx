@@ -15,6 +15,8 @@ const Navbar: React.FC = () => {
             <div className="bg-orange-500 p-2 rounded-lg">
               <Bus className="w-6 h-6 text-white" />
             </div>
+            <img src="\logo.jpeg" alt="Logo" width="150" height="80">
+
             {/* <span className="text-xl font-bold text-orange-600">BusHive</span> */} 
           </Link>
 
