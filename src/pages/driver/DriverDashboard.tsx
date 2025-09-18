@@ -72,31 +72,8 @@ const DriverDashboard: React.FC = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6">
-          {/* Current Status Section */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold text-gray-800 mb-6">Current Status</h2>
-            
-            {/* Current Time */}
-            <div className="text-center mb-6">
-              <div className="bg-gray-50 rounded-lg p-4 mb-4">
-                <p className="text-sm text-gray-600 mb-1">{formatDate(currentTime)}</p>
-                <p className="text-3xl font-bold text-gray-900">{formatTime(currentTime)}</p>
-              </div>
-            </div>
-
-            {/* Status */}
-            <div className="text-center">
-              <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-green-100 text-green-800">
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                <span className="font-medium">
-                  Bus is Active
-                </span>
-              </div>
-            </div>
-          </div>
-
           {/* History Section */}
-          <div className="bg-white rounded-lg shadow-md p-6">
+          <div className="bg-white rounded-lg shadow-md p-6 lg:col-span-2">
             <h2 className="text-xl font-semibold text-gray-800 mb-6 flex items-center">
               <History className="w-5 h-5 mr-2 text-gray-600" />
               Clock History

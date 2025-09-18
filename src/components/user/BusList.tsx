@@ -22,9 +22,9 @@ interface BusListProps {
 const BusList: React.FC<BusListProps> = ({ buses, onBusSelect, selectedBus }) => {
   const getCapacityColor = (current: number, total: number) => {
     const percentage = (current / total) * 100;
-    if (percentage < 50) return 'text-green-600 bg-green-100';
-    if (percentage < 80) return 'text-orange-600 bg-orange-100';
-    return 'text-red-600 bg-red-100';
+    if (percentage < 50) return { color: 'text-green-600 bg-green-100', status: 'High' };
+    if (percentage < 80) return { color: 'text-orange-600 bg-orange-100', status: 'Medium' };
+    return { color: 'text-red-600 bg-red-100', status: 'Low' };
   };
 
   return (
@@ -67,9 +67,9 @@ const BusList: React.FC<BusListProps> = ({ buses, onBusSelect, selectedBus }) =>
               <div className="flex items-center space-x-2">
                 <Users className="w-4 h-4 text-purple-500" />
                 <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                  getCapacityColor(bus.capacity.current, bus.capacity.total)
+                  getCapacityColor(bus.capacity.current, bus.capacity.total).color
                 }`}>
-                  {bus.capacity.current}/{bus.capacity.total}
+                  {getCapacityColor(bus.capacity.current, bus.capacity.total).status}
                 </span>
               </div>
             </div>
