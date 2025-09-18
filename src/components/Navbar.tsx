@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img 
-              src="\image.jpeg" 
+              src="\logo.jpeg" 
               alt="Logo" 
               className="h-16 w-auto" // responsive size
             />
