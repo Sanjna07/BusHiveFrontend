@@ -10,11 +10,31 @@ const UserLogin: React.FC = () => {
   });
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Add login logic here
-    console.log('User login:', formData);
-    navigate('/user/dashboard');
+    
+    try {
+      const response = await fetch('http://localhost:5000/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('User logged in successfully:', data);
+        localStorage.setItem('token', data.token); 
+        navigate('/user/dashboard');
+      } else {
+        console.error('Login failed:', data.msg);
+        // Display an error message to the user
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
