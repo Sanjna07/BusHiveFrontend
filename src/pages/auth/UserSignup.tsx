@@ -11,11 +11,32 @@ const UserSignup: React.FC = () => {
   });
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Add signup logic here
-    console.log('User signup:', formData);
-    navigate('/user/dashboard');
+
+    try {
+      const response = await fetch('http://localhost:5000/api/users/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('User registered successfully:', data);
+        // Navigate to dashboard or login page after successful signup
+        navigate('/user/dashboard'); 
+      } else {
+        console.error('Signup failed:', data.message);
+        // You can use a state variable to show an error message to the user
+      }
+    } catch (error) {
+      console.error('Error during signup:', error);
+      // Handle network or other errors here
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
