@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { User, Mail, Lock, ArrowLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { User, Mail, Lock } from 'lucide-react';
 import AuthCard from '../../components/AuthCard';
 
 const UserSignup: React.FC = () => {
@@ -26,56 +26,47 @@ const UserSignup: React.FC = () => {
       const data = await response.json();
 
       if (response.ok) {
-        console.log('User registered successfully:', data);
-        // Navigate to dashboard or login page after successful signup
+        localStorage.setItem('token', data.token);
         navigate('/user/dashboard'); 
       } else {
         console.error('Signup failed:', data.message);
-        // You can use a state variable to show an error message to the user
       }
     } catch (error) {
       console.error('Error during signup:', error);
-      // Handle network or other errors here
     }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-white py-16">
-      <div className="container mx-auto px-4">
-        <Link
-          to="/"
-          className="inline-flex items-center space-x-2 text-orange-600 hover:text-orange-700 mb-8"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Back to Home</span>
-        </Link>
-
+    <div className="flex items-center justify-center px-4 py-4">
+      <div className="w-full max-w-sm">
         <AuthCard
-          title="Join BusHive as a User"
-          subtitle="Create your account to start tracking buses and planning your journeys"
-          icon={<User className="w-8 h-8 text-orange-600" />}
+          title={<span className="text-[#99744a] text-lg">Join BusHive as a User</span>}
+          subtitle={<span className="text-gray-600 text-sm">Create your account to start tracking buses and planning your journeys</span>}
+          icon={
+            <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-[#414a37]">
+              <User className="w-6 h-6 text-[#ece6e1]" />
+            </div>
+          }
+          className="p-6"
         >
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                 Full Name
               </label>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#99744a] w-4 h-4" />
                 <input
                   type="text"
                   id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
+                  className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#99744a] focus:border-transparent transition-all duration-200 text-sm"
                   placeholder="Enter your full name"
                   required
                 />
@@ -83,37 +74,37 @@ const UserSignup: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#99744a] w-4 h-4" />
                 <input
                   type="email"
                   id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
-                  placeholder="Enter your email address"
+                  className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#99744a] focus:border-transparent transition-all duration-200 text-sm"
+                  placeholder="Enter your email"
                   required
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                 Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#99744a] w-4 h-4" />
                 <input
                   type="password"
                   id="password"
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
+                  className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#99744a] focus:border-transparent transition-all duration-200 text-sm"
                   placeholder="Create a password"
                   required
                 />
@@ -122,18 +113,18 @@ const UserSignup: React.FC = () => {
 
             <button
               type="submit"
-              className="w-full bg-orange-500 text-white py-3 rounded-lg hover:bg-orange-600 transition-colors duration-200 font-semibold"
+              className="w-full bg-[#ece6e1] text-[#414a37] py-2.5 rounded-lg hover:bg-[#ece6e1]/90 transition-colors duration-200 font-semibold text-sm"
             >
               Create Account
             </button>
           </form>
 
-          <div className="mt-6 text-center">
+          <div className="mt-4 text-center text-sm">
             <p className="text-gray-600">
               Already have an account?{' '}
-              <Link to="/user/login" className="text-orange-600 hover:text-orange-700 font-semibold">
+              <a href="/user/login" className="text-[#99744a] hover:text-[#99744a]/80 font-semibold">
                 Sign in here
-              </Link>
+              </a>
             </p>
           </div>
         </AuthCard>

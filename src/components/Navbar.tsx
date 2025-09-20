@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { User, Menu, X, Route as RouteIcon, MapPin, Bus, Home, Mail } from 'lucide-react';
+import { User, Menu, X, Route as RouteIcon, MapPin, Home, Mail } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Home', href: '/', icon: <Home className="h-5 w-5" /> },
-    { name: 'Driver', href: '/about', icon: <RouteIcon className="h-5 w-5" /> },
+    { name: 'Driver', href: '/driver/login', icon: <RouteIcon className="h-5 w-5" /> },
     { name: 'Live Map', href: '/map', icon: <MapPin className="h-5 w-5" /> },
     { name: 'Contact Us', href: '/contact', icon: <Mail className="h-5 w-5" /> },
   ];
@@ -17,11 +17,14 @@ const Navbar: React.FC = () => {
   return (
     <nav className="bg-white sticky top-0 z-50 shadow-sm border-b border-[#99744A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo with Bus Icon */}
-          <Link to="/" className="flex items-center space-x-2">
-            <Bus className="h-8 w-8 text-[#99744A]" />
-            <span className="font-bold text-lg text-[#99744A]">TrackMyBus</span>
+        <div className="flex justify-between items-center h-20">
+          {/* Logo */}
+          <Link to="/" className="flex items-center">
+            <img
+              src="/public/logo1.jpeg"
+              alt="BusHive Logo"
+              className="h-20 w-20 -mt-1 object-contain" // bigger logo
+            />
           </Link>
 
           {/* Desktop Navigation Links */}
@@ -43,7 +46,6 @@ const Navbar: React.FC = () => {
                   <User className="h-4 w-4 text-[#99744A]" />
                   <span>Account</span>
                 </button>
-                {/* Optional dropdown menu can be added here */}
               </div>
             ) : (
               <Link

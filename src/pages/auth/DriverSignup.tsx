@@ -41,36 +41,31 @@ const DriverSignup: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-white py-16">
-      <div className="container mx-auto px-4">
-        <Link
-          to="/"
-          className="inline-flex items-center space-x-2 text-green-600 hover:text-green-700 mb-8"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Back to Home</span>
-        </Link>
-
+    <div className="flex items-center justify-center px-4 py-4">
+      <div className="w-full max-w-sm">
         <AuthCard
           title="Join BusHive as a Driver"
           subtitle="Register to start managing your bus operations and serving passengers"
-          icon={<Truck className="w-8 h-8 text-green-600" />}
-          variant="green"
+          icon={
+            <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-[#414a37]">
+              <Truck className="w-6 h-6 text-[#ece6e1]" />
+            </div>
+          }
         >
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                 Full Name
               </label>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#99744a] w-4 h-4" />
                 <input
                   type="text"
                   id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                  className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#99744a] focus:border-transparent transition-all duration-200 text-sm"
                   placeholder="Enter your full name"
                   required
                 />
@@ -78,18 +73,18 @@ const DriverSignup: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
                 Phone Number
               </label>
               <div className="relative">
-                <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#99744a] w-4 h-4" />
                 <input
                   type="tel"
                   id="phone"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                  className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#99744a] focus:border-transparent transition-all duration-200 text-sm"
                   placeholder="Enter your phone number"
                   required
                 />
@@ -97,18 +92,18 @@ const DriverSignup: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="aadhaar" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="aadhaar" className="block text-sm font-medium text-gray-700 mb-1">
                 Aadhaar Number
               </label>
               <div className="relative">
-                <CreditCard className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <CreditCard className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#99744a] w-4 h-4" />
                 <input
                   type="text"
                   id="aadhaar"
                   name="aadhaar"
                   value={formData.aadhaar}
                   onChange={handleAadhaarChange}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                  className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#99744a] focus:border-transparent transition-all duration-200 text-sm"
                   placeholder="XXXX-XXXX-XXXX"
                   maxLength={14}
                   required
@@ -121,16 +116,16 @@ const DriverSignup: React.FC = () => {
 
             <button
               type="submit"
-              className="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition-colors duration-200 font-semibold"
+              className="w-full bg-[#ece6e1] text-[#414a37] py-2.5 rounded-lg hover:bg-[#ece6e1]/90 transition-colors duration-200 font-semibold text-sm"
             >
               Continue to Verification
             </button>
           </form>
 
-          <div className="mt-6 text-center">
+          <div className="mt-4 text-center text-sm">
             <p className="text-gray-600">
               Already registered?{' '}
-              <Link to="/driver/login" className="text-green-600 hover:text-green-700 font-semibold">
+              <Link to="/driver/login" className="text-[#99744a] hover:text-[#99744a]/80 font-semibold">
                 Sign in here
               </Link>
             </p>
