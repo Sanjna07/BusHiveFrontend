@@ -77,7 +77,7 @@ const DriverDashboard: React.FC = () => {
           <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center justify-center text-center">
             <Clock className="w-12 h-12 text-[#99744a] mb-4" />
             <div className="text-sm text-gray-600">{formatDate(currentTime)}</div>
-            <div className="text-4xl sm:text-5xl font-extrabold text-[#414a37] tracking-tight mt-1">{formatTime(currentTime)}</div>
+            <div className="text-4xl sm:text-5xl font-extrabold text-[#304159] tracking-tight mt-1">{formatTime(currentTime)}</div>
           </div>
         </div>
 
@@ -92,7 +92,7 @@ const DriverDashboard: React.FC = () => {
             <div className="px-6 pb-4">
               <p className="text-3xl font-bold text-[#414a37]">156</p>
             </div>
-            <div className="bg-[#414a37] text-center py-2">
+            <div className="bg-[#304159] text-center py-2">
               <span className="text-white font-medium">Lifetime</span>
             </div>
           </div>
@@ -106,7 +106,7 @@ const DriverDashboard: React.FC = () => {
             <div className="px-6 pb-4">
               <p className="text-3xl font-bold text-[#414a37]">4.3</p>
             </div>
-            <div className="bg-[#414a37] text-center py-2">
+            <div className="bg-[#304159] text-center py-2">
               <span className="text-white font-semibold">Overall</span>
             </div>
           </div>
@@ -120,7 +120,7 @@ const DriverDashboard: React.FC = () => {
             <div className="px-6 pb-4">
               <p className="text-3xl font-bold text-[#414a37]">98%</p>
             </div>
-            <div className="bg-[#414a37] text-center py-2">
+            <div className="bg-[#304159] text-center py-2">
               <span className="text-white font-semibold">Overall</span>
             </div>
           </div>

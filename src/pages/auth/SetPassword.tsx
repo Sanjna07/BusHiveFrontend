@@ -45,8 +45,8 @@ const SetPassword: React.FC = () => {
           <AuthCard
             title="Registration Complete!"
             subtitle="Your Driver ID has been generated successfully"
-            icon={<CheckCircle className="w-8 h-8 text-green-600" />}
-            variant="green"
+            icon={<CheckCircle className="w-8 h-8 text-[#304159]" />}
+            variant="#304159"
           >
             <div className="space-y-6 text-center">
               <div className="bg-green-50 border border-green-200 rounded-lg p-6">
@@ -76,7 +76,7 @@ const SetPassword: React.FC = () => {
 
               <button
                 onClick={() => navigate('/driver/login')}
-                className="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition-colors duration-200 font-semibold"
+                className="w-full bg-[#304159] text-white py-3 rounded-lg hover:bg-[#2F362C] transition-colors duration-200 font-semibold"
               >
                 Go to Login
               </button>
@@ -93,8 +93,8 @@ const SetPassword: React.FC = () => {
         <AuthCard
           title="Set Your Password"
           subtitle="Create a secure password for your driver account"
-          icon={<Lock className="w-8 h-8 text-green-600" />}
-          variant="green"
+          icon={<Lock className="w-8 h-8 text-[#304159]" />}
+          variant="#304159"
         >
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
@@ -148,7 +148,7 @@ const SetPassword: React.FC = () => {
 
             <button
               type="submit"
-              className="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition-colors duration-200 font-semibold"
+              className="w-full bg-[#304159] text-white py-3 rounded-lg hover:bg-[#2F362C] transition-colors duration-200 font-semibold"
             >
               Complete Registration
             </button>

@@ -42,14 +42,14 @@ const AadhaarVerification: React.FC = () => {
         <AuthCard
           title="Aadhaar Verification"
           subtitle="Please wait while we verify your Aadhaar details"
-          icon={<Shield className="w-8 h-8 text-green-600" />}
+          icon={<Shield className="w-8 h-8 text-[#304159]" />}
           variant="green"
         >
           <div className="space-y-6">
             {/* Progress Bar */}
             <div className="w-full bg-gray-200 rounded-full h-3">
               <div
-                className="bg-green-500 h-3 rounded-full transition-all duration-300 ease-out"
+                className="bg-[#304159] h-3 rounded-full transition-all duration-300 ease-out"
                 style={{ width: `${progress}%` }}
               ></div>
             </div>
