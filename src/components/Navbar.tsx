@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
             <img
               src="/public/logo1.jpeg"
               alt="BusHive Logo"
-              className="h-20 w-20 -mt-1 object-contain" // bigger logo
+              className="h-36 w-36 -mt-1 object-contain" // bigger logo
             />
           </Link>
 
