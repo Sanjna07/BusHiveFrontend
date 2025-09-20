@@ -9,21 +9,31 @@ import {
 } from 'lucide-react';
 import SearchBar from '../../components/user/SearchBar';
 import BusList from '../../components/user/BusList';
-import MapView from '../../components/user/MapView';
+import MapView from '../../components/MapView';
 import FavoritesList from '../../components/user/FavoritesList';
 import TripHistory from '../../components/user/TripHistory';
 import { useNavigate } from 'react-router-dom';
 
+// Define the shape of the bus data for type safety
+interface Bus {
+  id: number;
+  busNumber: string;
+  route: string;
+  eta: string;
+  currentLocation: string;
+  capacity: { current: number; total: number; };
+  driver: string;
+}
+
 const UserDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'search' | 'favorites' | 'history'>('search');
-  const [searchResults, setSearchResults] = useState<any[]>([]);
-  const [showMap, setShowMap] = useState(false);
-  const [selectedBus, setSelectedBus] = useState<any>(null);
+  const [searchResults, setSearchResults] = useState<Bus[]>([]);
+  const [selectedBus, setSelectedBus] = useState<Bus | null>(null);
   const navigate = useNavigate();
 
   const handleSearch = (from: string, to: string) => {
     // Mock search results
-    const mockResults = [
+    const mockResults: Bus[] = [
       {
         id: 1,
         busNumber: 'KL-07-AX-1234',
@@ -53,10 +63,10 @@ const UserDashboard: React.FC = () => {
       }
     ];
     setSearchResults(mockResults);
-    setShowMap(true);
+    setSelectedBus(null); // Clear selected bus on a new search
   };
 
-  const handleBusSelect = (bus: any) => {
+  const handleBusSelect = (bus: Bus) => {
     setSelectedBus(bus);
   };
 
@@ -135,10 +145,13 @@ const UserDashboard: React.FC = () => {
                 <SearchBar onSearch={handleSearch} />
 
                 {/* Map View */}
-                {showMap && selectedBus && (
-                  <MapView selectedBus={selectedBus} />
+                {selectedBus && (
+                  <div className="bg-white rounded-lg shadow-md overflow-hidden p-4">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">Live Location</h3>
+                    <MapView selectedBus={selectedBus} />
+                  </div>
                 )}
-
+                
                 {/* Bus List */}
                 {searchResults.length > 0 && (
                   <BusList
