@@ -65,7 +65,10 @@ const FavoritesList: React.FC = () => {
               </div>
             </div>
 
-            <button className="w-full mt-3 bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition-colors duration-200 text-sm font-medium">
+            <button
+              className="w-full mt-3 text-white py-2 rounded-lg transition-colors duration-200 text-sm font-medium"
+              style={{ backgroundColor: '#304159', hover: { backgroundColor: '#2b384c' } }}
+            >
               Use This Route
             </button>
           </div>

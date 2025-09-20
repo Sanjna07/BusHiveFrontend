@@ -86,13 +86,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
           </div>
 
           <div className="flex space-x-3">
-            <button
-              type="submit"
-              disabled={!from || !to}
-              className="flex-1 bg-orange-500 text-white py-3 rounded-lg hover:bg-orange-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors duration-200 font-semibold"
-            >
-              Search Buses
-            </button>
+            <button type="submit" className ="flex-1 bg-[#304159] text-white py-3 rounded-lg hover:bg-[#253141] disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors duration-200 font-semibold"
+>
+  Search Buses
+</button>
+
             <button
               type="button"
               onClick={() => {
