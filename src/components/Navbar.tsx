@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Home', href: '/', icon: <Home className="h-5 w-5" /> },
-    { name: 'About', href: '/about', icon: <RouteIcon className="h-5 w-5" /> },
+    { name: 'Driver', href: '/about', icon: <RouteIcon className="h-5 w-5" /> },
     { name: 'Live Map', href: '/map', icon: <MapPin className="h-5 w-5" /> },
     { name: 'Contact Us', href: '/contact', icon: <Mail className="h-5 w-5" /> },
   ];
