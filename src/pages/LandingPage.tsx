@@ -115,9 +115,8 @@ const BusTrackingLanding: React.FC = () => {
 
           {/* CTA Button */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
-            
+            <a href="/user/signup">
               <button 
-                onClick={() => setShowLoginModal(true)}
                 className={`px-6 md:px-8 py-3 md:py-4 text-white rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2 text-sm md:text-base ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
                 style={{
                   background: `linear-gradient(135deg, #414a37 0%, #99744a 100%)`,
@@ -129,7 +128,7 @@ const BusTrackingLanding: React.FC = () => {
                   <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
-          
+            </a>
              <a href="/">  
               <button className="px-6 md:px-8 py-3 md:py-4 font-semibold transition-colors duration-300 text-sm md:text-base" style={{color: '#414a38'}}>
               About Us
@@ -138,8 +137,6 @@ const BusTrackingLanding: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {showLoginModal && <LoginModal onClose={() => setShowLoginModal(false)} />}
 
       {/* Section 2: Features with 3D Flip Animation - Hidden on small screens */}
       <section className="hidden md:block relative h-screen py-20 px-6 bg-gradient-to-b from-white to-gray-50">

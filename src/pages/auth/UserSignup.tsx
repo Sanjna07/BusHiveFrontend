@@ -110,8 +110,8 @@ const UserSignup: React.FC = () => {
                 />
               </div>
             </div>
-
-            <button
+            
+            <button onClick ={() => {navigate('/user/login');}}
               type="submit"
               className="w-full bg-[#ece6e1] text-[#414a37] py-2.5 rounded-lg hover:bg-[#ece6e1]/90 transition-colors duration-200 font-semibold text-sm"
             >
