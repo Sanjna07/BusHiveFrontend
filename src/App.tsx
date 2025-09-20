@@ -14,6 +14,7 @@ import CarpoolPage from './pages/user/CarpoolPage';
 import RoutePlannerPage from './pages/user/RoutePlannerPage';
 import FeedbackPage from './pages/user/FeedbackPage';
 import SettingsPage from './pages/user/SettingsPage';
+import ContactUs from './components/ContactUS';
 import Footer from './components/footer';
 
 const App: React.FC = () => {
@@ -35,6 +36,10 @@ const App: React.FC = () => {
               <Route path="/driver/signup" element={<DriverSignup />} />
               <Route path="/driver/verify-aadhaar" element={<AadhaarVerification />} />
               <Route path="/driver/set-password" element={<SetPassword />} />
+
+              {/* General Routes */}
+              <Route path="/contact" element={<ContactUs />} />
+              <Route path="/map" element={<div className="flex justify-center items-center h-screen">Live Map Placeholder</div>} />
 
               {/* Dashboard Routes */}
               <Route path="/user/dashboard" element={<UserDashboard />} />
