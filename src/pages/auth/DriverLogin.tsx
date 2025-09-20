@@ -26,32 +26,27 @@ const DriverLogin: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-white py-16">
-      <div className="container mx-auto px-4">
-        <Link
-          to="/"
-          className="inline-flex items-center space-x-2 text-green-600 hover:text-green-700 mb-8"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Back to Home</span>
-        </Link>
-
+    <div className="flex items-center justify-center px-4 py-4">
+      <div className="w-full max-w-sm">
         <AuthCard
           title="Welcome Back, Driver!"
           subtitle="Sign in to manage your bus operations and serve passengers"
-          icon={<Truck className="w-8 h-8 text-green-600" />}
-          variant="green"
+          icon={
+            <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-[#414a37]">
+              <Truck className="w-6 h-6 text-[#ece6e1]" />
+            </div>
+          }
         >
           {/* Login Type Selector */}
           <div className="mb-6">
-            <div className="flex rounded-lg bg-gray-100 p-1">
+            <div className="flex rounded-lg bg-[#f7f2eb] p-1">
               <button
                 type="button"
                 onClick={() => setLoginType('phone')}
                 className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
                   loginType === 'phone'
-                    ? 'bg-white text-green-600 shadow-sm'
-                    : 'text-gray-600 hover:text-green-600'
+                    ? 'bg-white text-[#414a37] shadow-sm'
+                    : 'text-gray-600 hover:text-[#414a37]'
                 }`}
               >
                 Phone Number
@@ -61,8 +56,8 @@ const DriverLogin: React.FC = () => {
                 onClick={() => setLoginType('driverId')}
                 className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
                   loginType === 'driverId'
-                    ? 'bg-white text-green-600 shadow-sm'
-                    : 'text-gray-600 hover:text-green-600'
+                    ? 'bg-white text-[#414a37] shadow-sm'
+                    : 'text-gray-600 hover:text-[#414a37]'
                 }`}
               >
                 Driver ID
@@ -70,16 +65,16 @@ const DriverLogin: React.FC = () => {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="phoneOrId" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="phoneOrId" className="block text-sm font-medium text-gray-700 mb-1">
                 {loginType === 'phone' ? 'Phone Number' : 'Driver ID'}
               </label>
               <div className="relative">
                 {loginType === 'phone' ? (
-                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#99744a] w-4 h-4" />
                 ) : (
-                  <CreditCard className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <CreditCard className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#99744a] w-4 h-4" />
                 )}
                 <input
                   type={loginType === 'phone' ? 'tel' : 'text'}
@@ -87,7 +82,7 @@ const DriverLogin: React.FC = () => {
                   name="phoneOrId"
                   value={formData.phoneOrId}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                  className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#99744a] focus:border-transparent transition-all duration-200 text-sm"
                   placeholder={loginType === 'phone' ? 'Enter your phone number' : 'Enter your Driver ID'}
                   required
                 />
@@ -95,18 +90,18 @@ const DriverLogin: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                 Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#99744a] w-4 h-4" />
                 <input
                   type="password"
                   id="password"
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                  className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#99744a] focus:border-transparent transition-all duration-200 text-sm"
                   placeholder="Enter your password"
                   required
                 />
@@ -115,16 +110,16 @@ const DriverLogin: React.FC = () => {
 
             <button
               type="submit"
-              className="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition-colors duration-200 font-semibold"
+              className="w-full bg-[#ece6e1] text-[#414a37] py-2.5 rounded-lg hover:bg-[#ece6e1]/90 transition-colors duration-200 font-semibold text-sm"
             >
               Sign In
             </button>
           </form>
 
-          <div className="mt-6 text-center">
+          <div className="mt-4 text-center text-sm">
             <p className="text-gray-600">
               New driver?{' '}
-              <Link to="/driver/signup" className="text-green-600 hover:text-green-700 font-semibold">
+              <Link to="/driver/signup" className="text-[#99744a] hover:text-[#99744a]/80 font-semibold">
                 Register here
               </Link>
             </p>

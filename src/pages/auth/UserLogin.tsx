@@ -41,15 +41,13 @@ const UserLogin: React.FC = () => {
     <div className="flex items-center justify-center px-4 py-4">
       <div className="w-full max-w-sm">
         <AuthCard
-          title={<span className="text-[#99744a] text-lg">Welcome Back, User!</span>}
-          subtitle={<span className="text-gray-600 text-sm">Sign in to track your buses and plan your journey</span>}
+          title="Welcome Back, User!"
+          subtitle="Sign in to track your buses and plan your journey"
           icon={
-  <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-[#414a37]">
-    <User className="w-6 h-6 text-[#ece6e1]" />
-  </div>
-}
-
-          className="p-6"
+            <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-[#414a37]">
+              <User className="w-6 h-6 text-[#ece6e1]" />
+            </div>
+          }
         >
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
