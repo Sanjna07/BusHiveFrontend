@@ -97,7 +97,7 @@ const BusTrackingLanding: React.FC = () => {
             <div>
               <div className="w-48 h-48 md:w-48 md:h-48 bg-white rounded-full flex items-center justify-center">
                 <img
-                  src="/logo.png"
+                  src="https://res.cloudinary.com/dx0r0pbgb/image/upload/v1758448046/logo_u4xbmh.png"
                   alt="BusHive Logo"
                   className="w-46 h-46 md:w-46 md:h-48 object-contain"
                 />

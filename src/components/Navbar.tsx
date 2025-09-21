@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
-              src="/public/logo1.jpeg"
+              src="https://res.cloudinary.com/dx0r0pbgb/image/upload/v1758448036/logo1_qzpcys.jpg"
               alt="BusHive Logo"
               className="h-28 w-28 object-contain"
             />
