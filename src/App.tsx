@@ -7,10 +7,10 @@ import UserSignup from './pages/auth/UserSignup';
 import DriverLogin from './pages/auth/DriverLogin';
 import UserDashboard from './pages/user/UserDashboard';
 import DriverDashboard from './pages/driver/DriverDashboard';
-import CarpoolPage from './pages/user/CarpoolPage';
-import RoutePlannerPage from './pages/user/RoutePlannerPage';
-import FeedbackPage from './pages/user/FeedbackPage';
-import SettingsPage from './pages/user/SettingsPage';
+// import CarpoolPage from './pages/user/CarpoolPage';
+// import RoutePlannerPage from './pages/user/RoutePlannerPage';
+// import FeedbackPage from './pages/user/FeedbackPage';
+// import SettingsPage from './pages/user/SettingsPage';
 import ContactUs from './components/ContactUS';
 import Footer from './components/footer';
 
@@ -40,10 +40,10 @@ const App: React.FC = () => {
 
               {/* Dashboard Routes */}
               <Route path="/user/dashboard" element={<UserDashboard />} />
-              <Route path="/user/carpool" element={<CarpoolPage />} />
+              {/* <Route path="/user/carpool" element={<CarpoolPage />} />
               <Route path="/user/route-planner" element={<RoutePlannerPage />} />
               <Route path="/user/feedback" element={<FeedbackPage />} />
-              <Route path="/user/settings" element={<SettingsPage />} />
+              <Route path="/user/settings" element={<SettingsPage />} /> */}
               <Route path="/driver/dashboard" element={<DriverDashboard />} />
 
               {/* Redirect unknown routes */}

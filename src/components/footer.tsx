@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
           {/* Logo + Tagline */}
           <div className="flex flex-col items-center md:items-start space-y-4">
             <img
-              src="/logo.png"
+              src="https://res.cloudinary.com/dx0r0pbgb/image/upload/v1758448046/logo_u4xbmh.png"
               alt="BusHive Logo"
               className="w-28 h-auto"
             />
