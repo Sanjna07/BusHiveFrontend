@@ -6,7 +6,8 @@ const DriverSignup: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    aadhaar: ''
+    aadhaar: '',
+    busNumber: '' // ✅ Added bus number
   });
   const navigate = useNavigate();
 
@@ -117,6 +118,26 @@ const DriverSignup: React.FC = () => {
                   onChange={handleChange}
                   className="w-full pl-9 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#99744a] focus:border-transparent transition-all duration-200 text-sm"
                   placeholder="Enter your phone number"
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Bus Number ✅ */}
+            <div>
+              <label htmlFor="busNumber" className="block text-sm font-medium text-gray-700 mb-1">
+                Bus Number
+              </label>
+              <div className="relative">
+                <Truck className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#99744a] w-4 h-4" />
+                <input
+                  type="text"
+                  id="busNumber"
+                  name="busNumber"
+                  value={formData.busNumber}
+                  onChange={handleChange}
+                  className="w-full pl-9 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#99744a] focus:border-transparent transition-all duration-200 text-sm"
+                  placeholder="Enter your bus number (e.g. UP-16 AB 1234)"
                   required
                 />
               </div>

@@ -145,7 +145,7 @@ const UserSignup: React.FC = () => {
               </div>
             </div>
 
-            <button onClick={() => {navigate('/user/dashboard');}}
+            <button 
               type="submit"
               className="w-full bg-[#414A37] text-white py-3 rounded-lg hover:bg-[#2F362C] transition-colors duration-200 font-semibold text-sm flex items-center justify-center space-x-2"
             >
