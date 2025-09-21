@@ -8,13 +8,44 @@ const DriverLogin: React.FC = () => {
     phoneOrId: '',
     password: ''
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Add login logic here
-    console.log('Driver login:', formData);
-    navigate('/driver/dashboard');
+    setLoading(true);
+    setError('');
+
+    const loginData = {
+      phoneOrId: formData.phoneOrId,
+      password: formData.password
+    };
+
+    try {
+      const res = await fetch('http://localhost:5002/api/drivers/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(loginData),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        console.log('Login successful:', data);
+        // Save token/driver data here if needed
+        navigate('/driver/dashboard');
+      } else {
+        const errData = await res.json();
+        setError(errData.msg || 'Login failed. Please check your credentials.');
+      }
+    } catch (err) {
+      console.error('Network error:', err);
+      setError('A network error occurred. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -97,6 +128,12 @@ const DriverLogin: React.FC = () => {
             </div>
           </div>
 
+          {error && (
+            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm mb-4" role="alert">
+              {error}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="phoneOrId" className="block text-sm font-medium text-gray-700 mb-1">
@@ -143,19 +180,15 @@ const DriverLogin: React.FC = () => {
             <button
               type="submit"
               className="w-full bg-[#414A37] text-white py-3 rounded-lg hover:bg-[#2F362C] transition-colors duration-200 font-semibold text-sm flex items-center justify-center space-x-2"
+              disabled={loading}
             >
-              <span>Sign In</span>
+              {loading ? (
+                <div className="h-4 w-4 rounded-full border-2 border-t-white animate-spin"></div>
+              ) : (
+                <span>Sign In</span>
+              )}
             </button>
           </form>
-
-          <div className="mt-6 text-center text-sm">
-            <p className="text-gray-600">
-              New driver?{' '}
-              <Link to="/driver/signup" className="text-[#99744a] hover:text-[#99744a]/80 font-semibold">
-                Register here
-              </Link>
-            </p>
-          </div>
         </div>
       </div>
     </div>

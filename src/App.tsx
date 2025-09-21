@@ -5,9 +5,6 @@ import LandingPage from './pages/LandingPage';
 import UserLogin from './pages/auth/UserLogin';
 import UserSignup from './pages/auth/UserSignup';
 import DriverLogin from './pages/auth/DriverLogin';
-import DriverSignup from './pages/auth/DriverSignup';
-import AadhaarVerification from './pages/auth/AadhaarVerification';
-import SetPassword from './pages/auth/SetPassword';
 import UserDashboard from './pages/user/UserDashboard';
 import DriverDashboard from './pages/driver/DriverDashboard';
 import CarpoolPage from './pages/user/CarpoolPage';
@@ -31,15 +28,15 @@ const App: React.FC = () => {
               <Route path="/user/login" element={<UserLogin />} />
               <Route path="/user/signup" element={<UserSignup />} />
 
-              {/* Driver Auth Routes */}
+              {/* Driver Auth Route */}
               <Route path="/driver/login" element={<DriverLogin />} />
-              <Route path="/driver/signup" element={<DriverSignup />} />
-              <Route path="/driver/verify-aadhaar" element={<AadhaarVerification />} />
-              <Route path="/driver/set-password" element={<SetPassword />} />
 
               {/* General Routes */}
               <Route path="/contact" element={<ContactUs />} />
-              <Route path="/map" element={<div className="flex justify-center items-center h-screen">Live Map Placeholder</div>} />
+              <Route
+                path="/map"
+                element={<div className="flex justify-center items-center h-screen">Live Map Placeholder</div>}
+              />
 
               {/* Dashboard Routes */}
               <Route path="/user/dashboard" element={<UserDashboard />} />
